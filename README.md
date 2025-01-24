@@ -1,3 +1,11 @@
+#  Зачем нам форк?
+
+Чтобы ограничить CPU инструкции, которые с++ компилятор должен использовать при компиляции кода библиотеки.
+Сборка с инструкцией -march=native использует все CPU инструкции доступные на машинке, где происходит сборка. Мы обычно собираем образ
+базовый кардинала на стенде, а на стендах отличаются CPU инструкции от прода, посмотреть можно такой командой: grep flags /proc/cpuinfo -m1
+Поэтому мы ограничили их такими флагами: '-mavx2', '-mavx', '-msse4.1'
+Тут больше информации о флагах при сборке c++ кода: https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
+
 [![PyPI version](https://img.shields.io/pypi/v/pyfastpfor.svg)](https://pypi.python.org/pypi/pyfastpfor/)
 [![Downloads](https://pepy.tech/badge/pyfastpfor)](https://pepy.tech/project/pyfastpfor)
 # PyFastPFor
